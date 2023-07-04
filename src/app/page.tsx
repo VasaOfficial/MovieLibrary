@@ -2,6 +2,7 @@ import Image from "next/image"
 import Logo from 'public/assets/logo4.png'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { LabelDemo } from "@/components/Label"
+import { TextInput } from "@/components/Textarea"
 
 export default function Home() {
   return (
@@ -42,6 +43,7 @@ export default function Home() {
               <div className="flex justify-center mt-10 mb-10">
                 <LabelDemo />
               </div>
+              <TextInput />
             </div>
           </section>
         </main>
