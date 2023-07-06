@@ -207,4 +207,4 @@ export const genres = [
   id: "zombie",
   label: "Zombie",
   },
-  ] as const;
+  ];

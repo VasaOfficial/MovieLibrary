@@ -1,3 +1,6 @@
+'use client'
+import { useState, useEffect } from "react"
+
 import Image from "next/image"
 import Logo from 'public/assets/logo4.png'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
@@ -6,6 +9,12 @@ import { TextInput } from "@/components/Textarea"
 import { Footer } from "@/components/Footer"
 
 export default function Home() {
+  const [selectedOption, setSelectedOption] = useState("movie");
+
+  const handleOptionChange = (value: string) => {
+    setSelectedOption(value);
+  };
+  
   return (
     <div className="bg-black">
       <div className="mx-auto flex min-h-screen max-w-5xl flex-col px-4">
@@ -28,9 +37,9 @@ export default function Home() {
                 <h1 className="mb-8 bg-gradient-to-t from-[#6d6d6d] to-[#f4f4f4] bg-clip-text text-4xl text-transparent md:text-5xl">Generate show or movie recommendations with Open AI</h1>
                 <p className="inline-flex animate-text-gradient bg-gradient-to-r from-[#b2a8fd] via-[#8678f9] to-[#c7d2fe] bg-[200%_auto] bg-clip-text text-xl text-transparent">What kind of cinema are you searching for?</p>
                 <div className="flex justify-center mt-10 mb-10">
-                  <Select>
+                  <Select onValueChange={handleOptionChange} defaultValue={'movie'}>
                     <SelectTrigger className="w-[300px] text-white">
-                      <SelectValue  placeholder="Movie" />
+                      <SelectValue placeholder="Movie" />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="movie">Movie</SelectItem>
