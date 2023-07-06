@@ -3,6 +3,7 @@ import Logo from 'public/assets/logo4.png'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { LabelDemo } from "@/components/Label"
 import { TextInput } from "@/components/Textarea"
+import { Footer } from "@/components/Footer"
 
 export default function Home() {
   return (
@@ -19,7 +20,7 @@ export default function Home() {
         </header>
         <main className="flex-1">
           <section>
-            <div className="relative z-0 mx-auto max-w-3x1 pb-24 pt-12 text-center">
+            <div className="relative z-0 mx-auto max-w-3x1 pt-12 text-center">
               <div className="absolute -top-4 -z-10 flex w-full justify-center">
                 <div className="h-[310px] w-[310px] max-w-full animate-pulse-slow rounded-full bg-[#8678F9] opacity-20 blur-[100px]"/>
               </div>
@@ -47,6 +48,7 @@ export default function Home() {
             </div>
           </section>
         </main>
+        <Footer />
       </div>
     </div>
   )
