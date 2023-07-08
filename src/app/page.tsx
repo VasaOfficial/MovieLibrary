@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect } from "react"
+import { useState} from "react"
 
 import Image from "next/image"
 import Logo from 'public/assets/logo4.png'
