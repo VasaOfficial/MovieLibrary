@@ -4,7 +4,11 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { genres } from "db/genres";
 
-export function LabelDemo() {
+interface LabelDemoProps {
+  onGenresChange: (genres: string[]) => void;
+}
+
+export function LabelDemo({ onGenresChange }: LabelDemoProps) {
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
 
   const handleCheckboxChange = (genreId: string) => {
@@ -15,6 +19,8 @@ export function LabelDemo() {
         return [...prevSelectedGenres, genreId];
       }
     });
+  
+    onGenresChange([...selectedGenres, genreId]);
   };
 
   return (

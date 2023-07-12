@@ -1,18 +1,30 @@
 'use client'
-import { useState} from "react"
-
+import { useState, ChangeEvent } from "react"
 import Image from "next/image"
 import Logo from 'public/assets/logo4.png'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { LabelDemo } from "@/components/Label"
 import { TextInput } from "@/components/Textarea"
 import { Footer } from "@/components/Footer"
+import { useCompletion } from 'ai/react'
 
 export default function Home() {
   const [selectedOption, setSelectedOption] = useState("movie");
+  const [textInput, setTextInput] = useState("");
+  const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
+
+  const { completion, input, handleInputChange, handleSubmit } = useCompletion();
 
   const handleOptionChange = (value: string) => {
     setSelectedOption(value);
+  };
+
+  const handleTextInputChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    setTextInput(e.target.value);
+  };
+
+  const handleGenresChange = (genres: string[]) => {
+    setSelectedGenres(genres);
   };
   
   return (
@@ -30,30 +42,36 @@ export default function Home() {
         <main className="flex-1">
           <section>
             <div className="relative z-0 mx-auto max-w-3x1 pt-12 text-center">
-              <div className="absolute -top-4 -z-10 flex w-full justify-center">
-                <div className="h-[310px] w-[310px] max-w-full animate-pulse-slow rounded-full bg-[#8678F9] opacity-20 blur-[100px]"/>
-              </div>
-              <div>
-                <h1 className="mb-8 bg-gradient-to-t from-[#6d6d6d] to-[#f4f4f4] bg-clip-text text-4xl text-transparent md:text-5xl">Generate show or movie recommendations with Open AI</h1>
-                <p className="inline-flex animate-text-gradient bg-gradient-to-r from-[#b2a8fd] via-[#8678f9] to-[#c7d2fe] bg-[200%_auto] bg-clip-text text-xl text-transparent">What kind of cinema are you searching for?</p>
-                <div className="flex justify-center mt-10 mb-10">
-                  <Select onValueChange={handleOptionChange} defaultValue={'movie'}>
-                    <SelectTrigger className="w-[300px] text-white">
-                      <SelectValue placeholder="Movie" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="movie">Movie</SelectItem>
-                      <SelectItem value="tv show">Tv Show</SelectItem>
-                      <SelectItem value="tv show or movie">No Preference</SelectItem>
-                    </SelectContent>
-                  </Select>
+              <form onSubmit={handleSubmit}>
+                <div className="absolute -top-4 -z-10 flex w-full justify-center">
+                  <div className="h-[310px] w-[310px] max-w-full animate-pulse-slow rounded-full bg-[#8678F9] opacity-20 blur-[100px]"/>
                 </div>
-              </div>
-              <p className="inline-flex animate-text-gradient bg-gradient-to-r from-[#b2a8fd] via-[#8678f9] to-[#c7d2fe] bg-[200%_auto] bg-clip-text text-xl text-transparent">Select all categories that you want the show or movie to include.</p>
-              <div className="flex justify-center mt-10 mb-10">
-                <LabelDemo />
-              </div>
-              <TextInput />
+                <div>
+                  <h1 className="mb-8 bg-gradient-to-t from-[#6d6d6d] to-[#f4f4f4] bg-clip-text text-4xl text-transparent md:text-5xl">Generate show or movie recommendations with Open AI</h1>
+                  <p className="inline-flex animate-text-gradient bg-gradient-to-r from-[#b2a8fd] via-[#8678f9] to-[#c7d2fe] bg-[200%_auto] bg-clip-text text-xl text-transparent">What kind of cinema are you searching for?</p>
+                  <div className="flex justify-center mt-10 mb-10">
+                    <Select onValueChange={handleOptionChange} defaultValue={'movie'}>
+                      <SelectTrigger className="w-[300px] text-white">
+                        <SelectValue placeholder="Movie" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="movie">Movie</SelectItem>
+                        <SelectItem value="tv show">Tv Show</SelectItem>
+                        <SelectItem value="tv show or movie">No Preference</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
+                <p className="inline-flex animate-text-gradient bg-gradient-to-r from-[#b2a8fd] via-[#8678f9] to-[#c7d2fe] bg-[200%_auto] bg-clip-text text-xl text-transparent">Select all categories that you want the show or movie to include.</p>
+                <div className="flex justify-center mt-10 mb-10">
+                  <LabelDemo onGenresChange={handleGenresChange} />
+                </div>
+                <TextInput value={input} onChange={handleInputChange} />
+                <button type="submit" className='inline-flex h-12 animate-background-shine items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50'>
+                  Create My List
+                </button>
+                <p className="text-white">{completion}</p>
+              </form>
             </div>
           </section>
         </main>
