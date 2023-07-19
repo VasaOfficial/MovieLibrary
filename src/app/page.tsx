@@ -1,7 +1,7 @@
 'use client'
 import { useState} from "react"
 import Image from "next/image"
-import Logo from 'public/assets/logo4.png'
+import Logo from 'public/assets/logo.png'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { LabelDemo } from "@/components/Label"
 import { TextInput } from "@/components/Textarea"
