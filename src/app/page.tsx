@@ -16,19 +16,10 @@ export default function Home() {
 
   const { messages, input, handleSubmit, setInput, isLoading } = useChat({
     api: "api/completion",
-    onFinish: () => {
-      setSelectedOption('movie')
-      setSelectedGenres([])
-      setInputChange('')
-    },
     onError: () => {
-      alert("There was an error with getting the reponse from the AI");
+      alert("There was an error with getting the response from the AI");
     }
   })
-
-  const messageContent = messages.length > 1 ? messages[1]?.content : null;
-
-  const recommendations = messageContent ? messageContent.split('\n').map((line) => line.replace(/^\d+\.\s*/, '')) : [];
 
   const handleOptionChange = (value: string) => {
     setSelectedOption(value);
@@ -45,7 +36,7 @@ export default function Home() {
   let formInputs = `Give me a list of 5 ${selectedOption} recommendations ${ selectedGenres ? `that fit all of the following categories: ${selectedGenres}` : ''}. 
   ${textInput ? `Make sure it fits the following description as well: ${textInput}.` : ''} 
   ${selectedGenres || textInput ? `If you do not have 5 recommendations that fit these criteria perfectly, do your best to suggest other ${selectedOption}'s that I might like.` : ''
-  } Please return this response as a numbered list with the ${selectedOption}'s title, followed by a colon, and then a brief description of the ${selectedOption}. There should be a line of whitespace between each item in the list. Also dont add any other text to the response other than the list of 5 ${selectedOption}`
+  } Please return this response as a numbered list with the ${selectedOption}'s title, followed by a colon, and then a brief description of the ${selectedOption}. There should be a line of whitespace between each item in the list. Also don't add any other text to the response other than the list of 5 ${selectedOption}`
 
   const submitForm = () => {
     if(isLoading){
@@ -98,7 +89,7 @@ export default function Home() {
                     Create My List
                   </button>
                 </form>
-                <CardAnimatedBorderGradient recommendations={recommendations} />
+                <CardAnimatedBorderGradient messages={messages} />
             </div>
           </section>
         </main>
