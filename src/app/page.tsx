@@ -14,8 +14,16 @@ export default function Home() {
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
   const [textInput, setInputChange] = useState('');
 
-  const { messages, input, handleSubmit, setInput } = useChat({
-    api: "api/completion"
+  const { messages, input, handleSubmit, setInput, isLoading } = useChat({
+    api: "api/completion",
+    onFinish: () => {
+      setSelectedOption('movie')
+      setSelectedGenres([])
+      setInputChange('')
+    },
+    onError: () => {
+      alert("There was an error with getting the reponse from the AI");
+    }
   })
 
   const messageContent = messages.length > 1 ? messages[1]?.content : null;
@@ -40,10 +48,10 @@ export default function Home() {
   } Please return this response as a numbered list with the ${selectedOption}'s title, followed by a colon, and then a brief description of the ${selectedOption}. There should be a line of whitespace between each item in the list. Also dont add any other text to the response other than the list of 5 ${selectedOption}`
 
   const submitForm = () => {
+    if(isLoading){
+      return
+    }
     setInput(formInputs);
-    setSelectedOption('movie')
-    setSelectedGenres([])
-    setInputChange('')
   }
 
   return (
