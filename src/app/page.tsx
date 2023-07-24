@@ -53,7 +53,8 @@ export default function Home() {
           src={Logo}
           width={250}
           height={250}
-          alt="Picture of the author"
+          sizes="250px"
+          alt="Logo"
           priority={true}
           />
         </header>
@@ -85,7 +86,7 @@ export default function Home() {
                     <LabelDemo onGenresChange={handleGenresChange} />
                   </div>
                   <TextInput value={textInput} onChange={handleTextChange} />
-                  <button type="submit" onClick={submitForm} className='inline-flex h-12 animate-background-shine items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50'>
+                  <button aria-label="Create My List" type="submit" onClick={submitForm} className='inline-flex h-12 animate-background-shine items-center justify-center rounded-md border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50'>
                     Create My List
                   </button>
                 </form>
