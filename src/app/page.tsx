@@ -14,7 +14,7 @@ export default function Home() {
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
   const [textInput, setInputChange] = useState('');
 
-  const { messages, input, handleSubmit, setInput, isLoading } = useChat({
+  const { messages, handleSubmit, setInput, isLoading } = useChat({
     api: "api/completion",
     onError: () => {
       alert("There was an error with getting the response from the AI");
