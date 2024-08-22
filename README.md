@@ -1,7 +1,6 @@
 <h1 align="center">
-  
-  ![logo](https://github.com/VasaOfficial/MovieLibrary/assets/113908218/18c20395-fcc7-46ef-a64f-e15687fd0985)
 
+![logo](https://github.com/VasaOfficial/MovieLibrary/assets/113908218/18c20395-fcc7-46ef-a64f-e15687fd0985)
 
 </h1>
 <p align="center">
@@ -9,7 +8,6 @@
 </p>
 
 ![Screenshot_3-min](https://github.com/VasaOfficial/MovieLibrary/assets/113908218/71389fe3-f3e5-4e45-8604-7bc6379d6b5e)
-
 
 <h2>About</h2>
 
@@ -37,12 +35,11 @@ Check out the live demo of MovieLibrary [here](https://your-demo-url.com).
 - Next.js
 - TypeScript
 - Tailwind CSS
-- OpenAI 
+- OpenAI
 
 <h2>Design</h2>
 
 ![Untitled-2023-07-03-1330](https://github.com/VasaOfficial/MovieLibrary/assets/113908218/d1e2a4d9-b905-4930-a13e-870fb94942f2)
-
 
 <h2>Installation</h2>
 

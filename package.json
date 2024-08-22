@@ -4,106 +4,34 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "build-stats": "cross-env ANALYZE=true npm run build",
-    "export": "next export",
-    "build-prod": "run-s clean build export",
-    "clean": "rimraf .next .swc out coverage",
-    "lint": "next lint",
-    "format": "next lint --fix && prettier '**/*.{json,yaml}' --write --ignore-path .gitignore",
-    "check-types": "tsc --noEmit --pretty && tsc --project cypress --noEmit --pretty",
-    "commit": "cz",
-    "e2e": "start-server-and-test dev http://localhost:3000 cypress",
-    "e2e:headless": "start-server-and-test dev http://localhost:3000 cypress:headless",
-    "prepare": "husky install",
-    "postbuild": "next-sitemap"
+    "start": "next start"
   },
   "dependencies": {
-    "@radix-ui/react-checkbox": "^1.0.4",
-    "@radix-ui/react-label": "^2.0.2",
-    "@radix-ui/react-select": "^1.2.2",
+    "@radix-ui/react-checkbox": "^1.1.1",
+    "@radix-ui/react-label": "^2.1.0",
+    "@radix-ui/react-select": "^2.1.1",
     "ai": "^2.1.22",
-    "class-variance-authority": "^0.6.1",
-    "clsx": "^1.2.1",
-    "eventsource-parser": "^1.0.0",
-    "lucide-react": "^0.258.0",
-    "next": "^13.4.10",
-    "next-seo": "^6.1.0",
-    "next-sitemap": "^4.1.8",
-    "openai": "^3.3.0",
-    "openai-edge": "^1.2.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.429.0",
+    "next": "^14.2.6",
+    "openai": "^4.56.0",
+    "openai-edge": "^1.2.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-query": "^3.39.3",
-    "sharp": "^0.32.3",
-    "tailwind-merge": "^1.14.0",
-    "tailwindcss-animate": "^1.0.6",
-    "zod": "^3.21.4"
+    "sharp": "^0.33.5",
+    "tailwind-merge": "^2.5.2",
+    "tailwindcss-animate": "^1.0.6"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.6.5",
-    "@commitlint/config-conventional": "^17.6.6",
-    "@commitlint/cz-commitlint": "^17.5.0",
-    "@next/bundle-analyzer": "^13.4.9",
-    "@percy/cli": "^1.25.0",
-    "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/git": "^10.0.1",
-    "@types/node": "^20.4.1",
-    "@types/react": "^18.2.14",
-    "@typescript-eslint/eslint-plugin": "^5.61.0",
-    "@typescript-eslint/parser": "^5.61.0",
-    "autoprefixer": "^10.4.14",
-    "commitizen": "^4.3.0",
-    "cross-env": "^7.0.3",
-    "cssnano": "^6.0.1",
-    "eslint": "^8.44.0",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-airbnb-typescript": "^17.0.0",
-    "eslint-config-next": "^13.4.9",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-jest": "^27.6.0",
-    "eslint-plugin-jsx-a11y": "^6.7.1",
-    "eslint-plugin-prettier": "^4.2.1",
-    "eslint-plugin-react": "^7.32.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-simple-import-sort": "^10.0.0",
-    "eslint-plugin-tailwindcss": "^3.13.0",
-    "eslint-plugin-unused-imports": "^2.0.0",
-    "http-server": "^14.1.1",
-    "husky": "^8.0.3",
-    "lint-staged": "^13.2.3",
-    "npm-run-all": "^4.1.5",
-    "postcss": "^8.4.25",
-    "prettier": "^3.0.0",
-    "rimraf": "^5.0.1",
-    "semantic-release": "^21.0.7",
-    "start-server-and-test": "^2.0.0",
+    "@next/bundle-analyzer": "^14.2.6",
+    "@types/node": "^22.5.0",
+    "@types/react": "^18.3.4",
+    "autoprefixer": "^10.4.20",
+    "cssnano": "^7.0.5",
+    "postcss": "^8.4.41",
     "tailwindcss": "^3.3.2",
-    "typescript": "^5.1.6"
-  },
-  "config": {
-    "commitizen": {
-      "path": "@commitlint/cz-commitlint"
-    }
-  },
-  "release": {
-    "branches": [
-      "main"
-    ],
-    "plugins": [
-      "@semantic-release/commit-analyzer",
-      "@semantic-release/release-notes-generator",
-      "@semantic-release/changelog",
-      [
-        "@semantic-release/npm",
-        {
-          "npmPublish": false
-        }
-      ],
-      "@semantic-release/git",
-      "@semantic-release/github"
-    ]
-  },
-  "author": "Ixartz (https://github.com/ixartz)"
+    "typescript": "^5.5.4"
+  }
 }

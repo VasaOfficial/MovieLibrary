@@ -50,3 +50,4 @@ local
 
 # vercel
 .vercel
+.vscode
